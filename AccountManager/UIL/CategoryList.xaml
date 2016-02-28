@@ -1,0 +1,29 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:AccountManager="clr-namespace:AccountManager" x:Class="AccountManager.UIL.CategoryList"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <AccountManager:AccountManagerDBDataSet x:Key="accountManagerDBDataSet"/>
+        <CollectionViewSource x:Key="categoryViewSource" Source="{Binding Category, Source={StaticResource accountManagerDBDataSet}}"/>
+    </UserControl.Resources>
+    <Grid Style="{StaticResource ContentRoot}">
+        <ScrollViewer>
+            <StackPanel MinWidth="200" DataContext="{StaticResource categoryViewSource}">
+                <DataGrid MouseDoubleClick="categoryDataGrid_MouseDoubleClick" x:Name="categoryDataGrid" IsReadOnly="True" SelectionMode="Single" Width="580" RowDetailsVisibilityMode="VisibleWhenSelected" ItemsSource="{Binding}" Height="291" EnableRowVirtualization="True" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="idCategoryColumn" Width="Auto" IsReadOnly="True" Header="Id Category" Binding="{Binding IdCategory}"/>
+                        <DataGridTextColumn x:Name="nameColumn" Width="Auto" Header="Name" Binding="{Binding Name}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button x:Name="Delete_B"     Content="Delete"        Width="80"  Margin="-225,0,0,0"    Click="Delete_B_Click"     BorderBrush="Red"    Visibility="Hidden"/>
+                <Button x:Name="Update_B"     Content="Update"        Width="80"  Margin="225,-26,0,0"   Click="Update_B_Click"     BorderBrush="Yellow" Visibility="Hidden"/>
+                <Button x:Name="RemovHash_B"  Content="Remove Hash"   Width="130" Margin="0,-27,0,0"     Click="RemovHash_B_Click"  BorderBrush="Green"  Visibility="Visible"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

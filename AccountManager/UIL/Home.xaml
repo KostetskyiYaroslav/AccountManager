@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="AccountManager.UIL.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Style="{StaticResource ContentRoot}">
+        <ScrollViewer>
+            <StackPanel MinWidth="200">
+                <Button Command="NavigationCommands.GoToPage" CommandTarget="{Binding ElementName=flowDocumentPageViewer}" CommandParameter="{Binding ElementName=AuthPage,Path=Text}">Go To Login Page</Button>
+                <Button Command="NavigationCommands.GoToPage" CommandTarget="{Binding ElementName=flowDocumentPageViewer}" CommandParameter="{Binding ElementName=RegistrationPage,Path=Text}">Go To User Registration Page *</Button>
+                <Button Command="NavigationCommands.GoToPage" CommandTarget="{Binding ElementName=flowDocumentPageViewer}" CommandParameter="{Binding ElementName=AccountAdd,Path=Text}">Go To Add Account Page *</Button>
+                <Button Command="NavigationCommands.GoToPage" CommandTarget="{Binding ElementName=flowDocumentPageViewer}" CommandParameter="{Binding ElementName=AccountService,Path=Text}">Go To Account Service Page *</Button>
+                <Label HorizontalAlignment="Right" Content="* - need authorization!"/>
+                <TextBox Name="AuthPage"            Visibility="Hidden">UIL/Authorization.xaml</TextBox>
+                <TextBox Name="RegistrationPage"    Visibility="Hidden">UIL/Registration.xaml</TextBox>
+                <TextBox Name="AccountAdd"          Visibility="Hidden">UIL/AddAccount.xaml</TextBox>
+                <TextBox Name="AccountService"      Visibility="Hidden">UIL/AccountList.xaml</TextBox>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

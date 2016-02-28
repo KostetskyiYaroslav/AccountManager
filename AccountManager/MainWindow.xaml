@@ -1,0 +1,29 @@
+﻿<mui:ModernWindow x:Class="AccountManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+        Title="mui" IsTitleVisible="True"
+        ContentSource="/UIL/Home.xaml">
+
+    <mui:ModernWindow.MenuLinkGroups>
+        <mui:LinkGroup DisplayName="welcome">
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="home" Source="/UIL/Home.xaml" />
+                <mui:Link DisplayName="authorization" Source="/UIL/Authorization.xaml" />
+                <mui:Link DisplayName="registration" Source="/UIL/Registration.xaml" />
+                <mui:Link DisplayName="account" Source="/UIL/AccountList.xaml" /> 
+                <mui:Link DisplayName="add account" Source="/UIL/AddAccount.xaml" />
+                <mui:Link DisplayName="category" Source="/UIL/CategoryList.xaml" />
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
+        <mui:LinkGroup DisplayName="settings" GroupKey="settings">
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="software" Source="/UIL/SettingsPage.xaml" />
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
+    </mui:ModernWindow.MenuLinkGroups>
+    
+    <mui:ModernWindow.TitleLinks>
+        <mui:Link DisplayName="developer" Source="https://vk.com" />
+    </mui:ModernWindow.TitleLinks>
+</mui:ModernWindow>

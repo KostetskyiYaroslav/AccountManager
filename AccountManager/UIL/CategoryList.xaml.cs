@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AccountManager.DAL;
+using AccountManager.TMC;
 
 namespace AccountManager.UIL
 {
@@ -27,107 +28,112 @@ namespace AccountManager.UIL
     {
         BusinnesLogic BL = null;
 
+
         public CategoryList()
         {
             InitializeComponent();
             this.BL = new BusinnesLogic();
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.categoryDataGrid.ItemsSource = this.BL.GetAllCategoryList();
-        }
-
-
         #region Function
 
-        private void ReadAccount()
+        private Category GetSelectedCategory()
         {
-            if (TMC.CurrentUser.UserName == "777")
+
+            foreach (Category Category in this.categoryDataGrid.SelectedItems)
             {
-                this.categoryDataGrid.ItemsSource = this.BL.GetAllAccounts().ToList();
+                return Category;
             }
-            else
-                this.categoryDataGrid.ItemsSource = this.BL.GetAccountsCurrentUser().ToList();
-        }
 
-
-        private void DeleteAccount()
-        {
-            MessageBoxResult confirmation = MessageBox.Show("Do you really want to delete this Contact?", "Confirmation",
-                                                          MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (confirmation == MessageBoxResult.Yes)
-            {
-              
-
-            }
-            else
-                MessageBox.Show("Choice was cancel!");
-        }
-
-
-        private void UpdateAccount()
-        {
-           
-        }
-
-
-        private void RemoveHashPassword() { }
-
-
-        private Category GetSelectedAccount()
-        {
-       
             return null;
         }
 
-        #endregion
+        public void ReadCategory()
+        {
+            this.categoryDataGrid.ItemsSource = this.BL.GetAllCategory().ToList();
+        }
 
+
+        #endregion
 
         #region Event
 
-        private void Delete_B_Click(object sender, RoutedEventArgs e)
-        {
-            this.DeleteAccount();
-            this.categoryDataGrid.IsReadOnly = true;
-            this.Delete_B.Visibility = Visibility.Hidden;
-            this.Update_B.Visibility = Visibility.Hidden;
-        }
-
-
         private void Update_B_Click(object sender, RoutedEventArgs e)
         {
-            this.UpdateAccount();
-            this.categoryDataGrid.IsReadOnly = true;
-            this.Delete_B.Visibility = Visibility.Hidden;
-            this.Update_B.Visibility = Visibility.Hidden;
-        }
+            Category UpdateCategory = this.GetSelectedCategory();
+
+            if (UpdateCategory != null) {
+                try
+                {
+                    this.BL.UpdateCategory(UpdateCategory);
+                    this.ReadCategory();
+                    MessageBox.Show("Category was successfully updated!");
+                    this.categoryDataGrid.IsReadOnly = true;
+                    this.Delete_B.Visibility = Visibility.Hidden;
+                    this.Update_B.Visibility = Visibility.Hidden;
+                }
+                catch (Exception eDeleteContact)
+                {
+                    MessageBox.Show("ERROR: " + eDeleteContact.Message);
+                }
+            }
+            else
+                MessageBox.Show("Please! Select one category!");
+
+         }
 
 
-        private void RemovHash_B_Click(object sender, RoutedEventArgs e)
+        private void Delete_B_Click(object sender, RoutedEventArgs e)
         {
-            this.RemoveHashPassword();
-            this.categoryDataGrid.IsReadOnly = true;
-            this.Delete_B.Visibility = Visibility.Hidden;
-            this.Update_B.Visibility = Visibility.Hidden;
-        }
+            MessageBoxResult confirmation = MessageBox.Show(
+                "Do you really want to delete this Category\n " +
+                "(All Account will be set `[NO]` Category)?", "Confirmation",
+                                                         MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (confirmation == MessageBoxResult.Yes)
+            {
+                Category DeleteCategory = this.GetSelectedCategory();
 
+                if (DeleteCategory != null)
+                    try
+                    {
+                        this.BL.RemoveCategory(DeleteCategory);
+                        this.ReadCategory();
+                        MessageBox.Show("Contact was successfully deleted!");
 
-        private void categoryDataGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.ReadAccount();
+                        this.categoryDataGrid.IsReadOnly = true;
+                        this.Delete_B.Visibility = Visibility.Hidden;
+                        this.Update_B.Visibility = Visibility.Hidden;
+                    }
+                    catch (Exception eDeleteContact)
+                    {
+                        MessageBox.Show("ERROR: " + eDeleteContact.Message);
+                    }
+                else
+                    MessageBox.Show("Please! Select one Category!");
+            }
+            else
+                MessageBox.Show("Choice was cancel!");
+         
         }
 
 
         private void categoryDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            this.categoryDataGrid.IsReadOnly = false;
-            this.Delete_B.Visibility = Visibility.Visible;
-            this.Update_B.Visibility = Visibility.Visible;
+            if (CurrentUser.UserName == "777")
+            {
+                this.categoryDataGrid.IsReadOnly = false;
+                this.Update_B.Visibility =
+                this.Delete_B.Visibility = Visibility.Visible;
+            }
+        }
+
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.ReadCategory();
         }
 
         #endregion
-
 
     }
 }

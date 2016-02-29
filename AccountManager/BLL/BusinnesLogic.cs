@@ -49,6 +49,12 @@ namespace AccountManager.BLL
             this.DAL.SaveChanges();
         }
 
+        public void RemoveCategory(Category RemoveCategory)
+        {
+
+            this.DAL.Category.Remove(RemoveCategory);
+            this.DAL.SaveChanges();
+        }
 
         public void RemoveAccount(Accounts Account)
         {
@@ -57,11 +63,31 @@ namespace AccountManager.BLL
         }
 
 
+        public void UpdateCategory(Category UpdateCategory)
+        {
+            var Categorys = this.DAL.Category.Where(w => w.IdCategory == UpdateCategory.IdCategory);
+
+            foreach (var item in Categorys)
+            {
+                item.Name = UpdateCategory.Name;
+            }
+            this.DAL.SaveChanges();
+
+        }
+
+
         public void UpdateAccount(Accounts accounts)
         {
             var accountResponse = this.DAL.Accounts.Where(x => x.IdAccount == accounts.IdAccount);
+            
             if (accountResponse != null)
             {
+                foreach (var a in accountResponse)
+                {
+                    if(a.IdCategory != accounts.IdCategory){
+                        a.Category = accounts.Category;
+                    }
+                }
                 foreach (var a in accountResponse)
                 {
                     a.Login = accounts.Login;
@@ -73,6 +99,7 @@ namespace AccountManager.BLL
                 this.DAL.SaveChanges();
             }
         }
+
 
         #region Get
 
@@ -105,7 +132,6 @@ namespace AccountManager.BLL
         }
 
 
-
         public Accounts GetAccountById(int Id)
         {
             var res = this.DAL.Accounts.Where(x => x.IdAccount == Id);
@@ -117,9 +143,16 @@ namespace AccountManager.BLL
             return null;
         }
 
+
         public IQueryable<Category> GetCategoryByName(string Name)
         {
             return this.DAL.Category.Where(w => w.Name == Name);
+        }
+
+
+        public DbSet<Category> GetAllCategory()
+        {
+            return this.DAL.Category;
         }
 
         public List<Category> GetAllCategoryList()

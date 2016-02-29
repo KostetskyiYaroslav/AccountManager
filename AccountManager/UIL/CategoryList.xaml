@@ -22,7 +22,6 @@
                 </DataGrid>
                 <Button x:Name="Delete_B"     Content="Delete"        Width="80"  Margin="-225,0,0,0"    Click="Delete_B_Click"     BorderBrush="Red"    Visibility="Hidden"/>
                 <Button x:Name="Update_B"     Content="Update"        Width="80"  Margin="225,-26,0,0"   Click="Update_B_Click"     BorderBrush="Yellow" Visibility="Hidden"/>
-                <Button x:Name="RemovHash_B"  Content="Remove Hash"   Width="130" Margin="0,-27,0,0"     Click="RemovHash_B_Click"  BorderBrush="Green"  Visibility="Visible"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

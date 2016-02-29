@@ -44,6 +44,18 @@ namespace AccountManager.UIL
                 this.accountsDataGrid.ItemsSource = this.BL.GetAccountsCurrentUser().ToList();
         }
 
+        private string GetCategoryDG() {
+
+            foreach (CustumAccount item in this.accountsDataGrid.SelectedItems)
+            {
+                if (item != null)
+                    return item.Category;
+                else
+                    MessageBox.Show("Please! Select Account!");
+            }
+
+            return null;
+        }
 
         private void DeleteAccount()
         {
@@ -78,7 +90,14 @@ namespace AccountManager.UIL
         {
             Accounts Account = this.GetSelectedAccount();
             if (Account != null)
+            {
+                Category category = null;
+                foreach (var item in this.BL.GetCategoryByName(this.GetCategoryDG()))
+                    category = item;
+                if (category.Name != Account.Category.Name)
+                    Account.Category = category;
                 this.BL.UpdateAccount(Account);
+            }
             else
                 MessageBox.Show("Please! Select one Account");
         }
@@ -90,7 +109,7 @@ namespace AccountManager.UIL
         private Accounts GetSelectedAccount()
         {
             Accounts Account = null;
-            
+
             foreach (CustumAccount item in this.accountsDataGrid.SelectedItems)
             {
                 if (item != null)

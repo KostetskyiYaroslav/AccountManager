@@ -44,7 +44,8 @@ namespace AccountManager.UIL
                 this.accountsDataGrid.ItemsSource = this.BL.GetAccountsCurrentUser().ToList();
         }
 
-        private string GetCategoryDG() {
+        private string GetCategoryDG()
+        {
 
             foreach (CustumAccount item in this.accountsDataGrid.SelectedItems)
             {
@@ -94,9 +95,22 @@ namespace AccountManager.UIL
                 Category category = null;
                 foreach (var item in this.BL.GetCategoryByName(this.GetCategoryDG()))
                     category = item;
-                if (category.Name != Account.Category.Name)
+                if (category != null)
+                {
+                    if (category.Name != Account.Category.Name)
+                    {
+                        Account.Category = category;
+                    }
+                    this.BL.UpdateAccount(Account);
+                }
+                else
+                {
+                    foreach (var item in this.BL.GetCategoryByName("[NO]"))
+                        category = item;
                     Account.Category = category;
-                this.BL.UpdateAccount(Account);
+                    this.BL.UpdateAccount(Account);
+                }
+                this.ReadAccount();
             }
             else
                 MessageBox.Show("Please! Select one Account");
@@ -108,12 +122,40 @@ namespace AccountManager.UIL
 
         private Accounts GetSelectedAccount()
         {
-            Accounts Account = null;
-
             foreach (CustumAccount item in this.accountsDataGrid.SelectedItems)
             {
                 if (item != null)
-                    return Account = this.BL.GetAccountById(item.IdAccount);
+                {
+                    Category AccountCategory = null;
+                    Users AccountUser = null;
+                    if(item.Category != "")
+                    foreach(var c in this.BL.GetCategoryByName(item.Category)){
+                        AccountCategory = c;
+                    }
+                    else
+                        foreach (var c in this.BL.GetCategoryByName("[NO]"))
+                        {
+                            AccountCategory = c;
+                        }
+                    
+                    foreach (var u in this.BL.GetUsers().Where(x => x.UserName == item.UserName))
+                    {
+                            AccountUser = u;
+                    }
+
+                    return new Accounts { 
+                        IdAccount = item.IdAccount,
+                        IdUser = AccountUser.IdUser,
+                        IdCategory = AccountCategory.IdCategory,
+                        Login = item.Login,
+                        Password = item.Password,
+                        Domain = item.Domain,
+                        SiteName = item.SiteName,
+                        Description = item.Description,
+                        Category = AccountCategory,
+                        Users = AccountUser
+                    };
+                }
                 else
                     MessageBox.Show("Please! Select Account!");
             }

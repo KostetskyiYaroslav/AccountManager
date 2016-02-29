@@ -4,12 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3c0338eba2d8415c94a8dc06f53f6b96" Name="Diagram1">
+      <Diagram DiagramId="365c18a912324f93ab7eeea2ad9ace74" Name="Diagram1">
         <EntityTypeShape EntityType="AccountManagerDBModel.Accounts" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="AccountManagerDBModel.Category" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AccountManagerDBModel.Users" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <AssociationConnector Association="AccountManagerDBModel.FK__Accounts__IdCate__1A14E395" ManuallyRouted="false" />
-        <AssociationConnector Association="AccountManagerDBModel.FK__Accounts__IdUser__1920BF5C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AccountManagerDBModel.Analytics" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountManagerDBModel.Category" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountManagerDBModel.Users" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="AccountManagerDBModel.FK__Accounts__IdCate__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountManagerDBModel.FK__Accounts__IdUser__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountManagerDBModel.FK__Analytics__IdAcc__6FE99F9F" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

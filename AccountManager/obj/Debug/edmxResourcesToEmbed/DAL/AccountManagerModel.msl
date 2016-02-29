@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище AccountManagerDBModelContainer" CdmEntityContainer="AccountManagerDBEntities">
+  <EntityContainerMapping StorageEntityContainer="Хранилище AccountManagerDBModelContainer" CdmEntityContainer="AccountManagerDBEntities1">
     <EntitySetMapping Name="Accounts">
       <EntityTypeMapping TypeName="AccountManagerDBModel.Accounts">
         <MappingFragment StoreEntitySet="Accounts">
@@ -12,6 +12,17 @@
           <ScalarProperty Name="Domain" ColumnName="Domain" />
           <ScalarProperty Name="SiteName" ColumnName="SiteName" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Analytics">
+      <EntityTypeMapping TypeName="AccountManagerDBModel.Analytics">
+        <MappingFragment StoreEntitySet="Analytics">
+          <ScalarProperty Name="IdAnalytics" ColumnName="IdAnalytics" />
+          <ScalarProperty Name="IdAccount" ColumnName="IdAccount" />
+          <ScalarProperty Name="SameLogin" ColumnName="SameLogin" />
+          <ScalarProperty Name="SamePassword" ColumnName="SamePassword" />
+          <ScalarProperty Name="NumberChange" ColumnName="NumberChange" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

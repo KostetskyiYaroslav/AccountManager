@@ -12,24 +12,14 @@ namespace AccountManager.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Accounts
+    public partial class Analytics
     {
-        public Accounts()
-        {
-            this.Analytics = new HashSet<Analytics>();
-        }
-    
+        public int IdAnalytics { get; set; }
         public int IdAccount { get; set; }
-        public int IdUser { get; set; }
-        public int IdCategory { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Domain { get; set; }
-        public string SiteName { get; set; }
-        public string Description { get; set; }
+        public int SameLogin { get; set; }
+        public int SamePassword { get; set; }
+        public int NumberChange { get; set; }
     
-        public virtual Category Category { get; set; }
-        public virtual Users Users { get; set; }
-        public virtual ICollection<Analytics> Analytics { get; set; }
+        public virtual Accounts Accounts { get; set; }
     }
 }

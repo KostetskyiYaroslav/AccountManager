@@ -13,6 +13,16 @@
     <Property Name="SiteName" Type="nvarchar" MaxLength="50" />
     <Property Name="Description" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="Analytics">
+    <Key>
+      <PropertyRef Name="IdAnalytics" />
+    </Key>
+    <Property Name="IdAnalytics" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdAccount" Type="int" Nullable="false" />
+    <Property Name="SameLogin" Type="int" Nullable="false" />
+    <Property Name="SamePassword" Type="int" Nullable="false" />
+    <Property Name="NumberChange" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Category">
     <Key>
       <PropertyRef Name="IdCategory" />
@@ -28,7 +38,7 @@
     <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="UserPassword" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Accounts__IdCate__1A14E395">
+  <Association Name="FK__Accounts__IdCate__60A75C0F">
     <End Role="Category" Type="Self.Category" Multiplicity="1" />
     <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -40,7 +50,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Accounts__IdUser__1920BF5C">
+  <Association Name="FK__Accounts__IdUser__5FB337D6">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
     <ReferentialConstraint>
@@ -52,17 +62,34 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Analytics__IdAcc__6FE99F9F">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+    <End Role="Analytics" Type="Self.Analytics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="IdAccount" />
+      </Principal>
+      <Dependent Role="Analytics">
+        <PropertyRef Name="IdAccount" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="Хранилище AccountManagerDBModelContainer">
     <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Analytics" EntityType="Self.Analytics" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Accounts__IdCate__1A14E395" Association="Self.FK__Accounts__IdCate__1A14E395">
+    <AssociationSet Name="FK__Accounts__IdCate__60A75C0F" Association="Self.FK__Accounts__IdCate__60A75C0F">
       <End Role="Category" EntitySet="Category" />
       <End Role="Accounts" EntitySet="Accounts" />
     </AssociationSet>
-    <AssociationSet Name="FK__Accounts__IdUser__1920BF5C" Association="Self.FK__Accounts__IdUser__1920BF5C">
+    <AssociationSet Name="FK__Accounts__IdUser__5FB337D6" Association="Self.FK__Accounts__IdUser__5FB337D6">
       <End Role="Users" EntitySet="Users" />
       <End Role="Accounts" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Analytics__IdAcc__6FE99F9F" Association="Self.FK__Analytics__IdAcc__6FE99F9F">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Analytics" EntitySet="Analytics" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

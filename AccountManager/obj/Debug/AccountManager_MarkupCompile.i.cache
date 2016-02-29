@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Yaroslav\Documents\Visual Studio 2013\Projects\AccountManager\AccountManager\App.xaml
-7-1940341106
+8904573759
 41156630621
-24-1274205129
+26-965577390
 24-224014011
-MainWindow.xaml;UIL\AccountList.xaml;UIL\AddAccount.xaml;UIL\Authorization.xaml;UIL\CategoryList.xaml;UIL\Home.xaml;UIL\Registration.xaml;
+MainWindow.xaml;UIL\AccountList.xaml;UIL\AddAccount.xaml;UIL\Analitycs.xaml;UIL\Authorization.xaml;UIL\CategoryList.xaml;UIL\Home.xaml;UIL\Registration.xaml;
 
-False
+True
 

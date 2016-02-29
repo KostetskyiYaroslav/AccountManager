@@ -11,9 +11,10 @@
                 <mui:Link DisplayName="home" Source="/UIL/Home.xaml" />
                 <mui:Link DisplayName="authorization" Source="/UIL/Authorization.xaml" />
                 <mui:Link DisplayName="registration" Source="/UIL/Registration.xaml" />
-                <mui:Link DisplayName="account" Source="/UIL/AccountList.xaml" /> 
-                <mui:Link DisplayName="add account" Source="/UIL/AddAccount.xaml" />
+                <mui:Link DisplayName="account" Source="/UIL/AccountList.xaml" />
+                <mui:Link DisplayName="add account" Source="/UIL/AddAccount.xaml" /> 
                 <mui:Link DisplayName="category" Source="/UIL/CategoryList.xaml" />
+                <mui:Link DisplayName="analitycs" Source="/UIL/Analitycs.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
         <mui:LinkGroup DisplayName="settings" GroupKey="settings">

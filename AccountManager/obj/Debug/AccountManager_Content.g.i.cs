@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dal/database/accountmanagerdb.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dal/database/accountmanagerdb_log.ldf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dal/accountmanagermodel.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dal/accountmanagermodel.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dal/database/accountmanagerdb.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("dal/database/accountmanagerdb_log.ldf")]
 
 

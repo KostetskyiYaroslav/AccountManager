@@ -13,10 +13,10 @@ namespace AccountManager.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AccountManagerDBEntities : DbContext
+    public partial class AccountManagerDBEntities1 : DbContext
     {
-        public AccountManagerDBEntities()
-            : base("name=AccountManagerDBEntities")
+        public AccountManagerDBEntities1()
+            : base("name=AccountManagerDBEntities1")
         {
         }
     
@@ -26,6 +26,7 @@ namespace AccountManager.DAL
         }
     
         public virtual DbSet<Accounts> Accounts { get; set; }
+        public virtual DbSet<Analytics> Analytics { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }

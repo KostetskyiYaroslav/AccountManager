@@ -113,26 +113,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="TMC\CustumAccount.cs" />
-    <Compile Include="UIL\AddAccount.xaml.cs">
-      <DependentUpon>AddAccount.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UIL\CategoryList.xaml.cs">
-      <DependentUpon>CategoryList.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UIL\Registration.xaml.cs">
-      <DependentUpon>Registration.xaml</DependentUpon>
-    </Compile>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="BLL\BusinnesLogic.cs" />
     <Compile Include="DAL\AccountManagerModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -151,12 +131,38 @@
     <Compile Include="DAL\Accounts.cs">
       <DependentUpon>AccountManagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Analytics.cs">
+      <DependentUpon>AccountManagerModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\Category.cs">
       <DependentUpon>AccountManagerModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Users.cs">
       <DependentUpon>AccountManagerModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="TMC\CustumAccount.cs" />
+    <Compile Include="UIL\AddAccount.xaml.cs">
+      <DependentUpon>AddAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIL\Analitycs.xaml.cs">
+      <DependentUpon>Analitycs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIL\CategoryList.xaml.cs">
+      <DependentUpon>CategoryList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UIL\Registration.xaml.cs">
+      <DependentUpon>Registration.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="BLL\BusinnesLogic.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -166,6 +172,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UIL\AddAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UIL\Analitycs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,13 +234,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DAL\DATABASE\AccountManagerDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DAL\DATABASE\AccountManagerDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>AccountManagerDB.mdf</DependentUpon>
-    </Content>
     <Content Include="DAL\AccountManagerModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AccountManagerModel.edmx</DependentUpon>
@@ -240,6 +243,13 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AccountManagerModel.edmx</DependentUpon>
       <LastGenOutput>AccountManagerModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\DATABASE\AccountManagerDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DAL\DATABASE\AccountManagerDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>AccountManagerDB.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

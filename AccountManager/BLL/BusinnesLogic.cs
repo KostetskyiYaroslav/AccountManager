@@ -12,12 +12,12 @@ namespace AccountManager.BLL
 {
     public class BusinnesLogic
     {
-        public AccountManagerDBEntities DAL = null;
+        public AccountManagerDBEntities1 DAL = null;
 
 
         public BusinnesLogic()
         {
-            this.DAL = new AccountManagerDBEntities();
+            this.DAL = new AccountManagerDBEntities1();
         }
 
 
@@ -36,9 +36,16 @@ namespace AccountManager.BLL
         }
 
 
+
         public void AddAccount(Accounts Account)
         {
             this.DAL.Accounts.Add(Account);
+            //this.DAL.Database.ExecuteSqlCommand(
+            //    "INSERT INTO [dbo].[Analytics] " +
+            //    "(IdAccount, SameLogin, SamePassword, NumberChange) " + 
+            //    "VALUES " + 
+            //    "(" + Account.IdAccount + "), 0, 0, 0)");
+         
             this.DAL.SaveChanges();
         }
 
@@ -102,6 +109,11 @@ namespace AccountManager.BLL
 
 
         #region Get
+
+        public DbSet<Analytics> GetAnalitycs() {
+            return this.DAL.Analytics;
+        }
+
 
         public IQueryable<object> GetAllAccounts()
         {
